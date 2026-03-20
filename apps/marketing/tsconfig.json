@@ -1,0 +1,11 @@
+{
+  "extends": "@ofortuna/config/tsconfig/astro",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@ofortuna/ui/*": ["../../packages/ui/src/*"]
+    }
+  },
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"]
+}

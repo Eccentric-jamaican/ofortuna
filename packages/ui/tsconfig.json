@@ -1,0 +1,12 @@
+{
+  "extends": "@ofortuna/config/tsconfig/base",
+  "compilerOptions": {
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    "baseUrl": ".",
+    "jsx": "react-jsx",
+    "paths": {
+      "@ofortuna/ui/*": ["./src/*"]
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
+}

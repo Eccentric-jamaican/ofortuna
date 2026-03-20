@@ -1,0 +1,36 @@
+{
+  "name": "@ofortuna/web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "convex:dev": "convex dev",
+    "convex:deploy": "convex deploy"
+  },
+  "dependencies": {
+    "@ofortuna/shared-types": "workspace:*",
+    "@ofortuna/ui": "workspace:*",
+    "@ofortuna/utils": "workspace:*",
+    "convex": "1.34.0",
+    "next": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.38.0",
+    "@ofortuna/config": "workspace:*",
+    "@tailwindcss/postcss": "catalog:",
+    "@types/node": "24.9.2",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "eslint": "catalog:",
+    "eslint-config-next": "16.2.0",
+    "tailwindcss": "catalog:",
+    "typescript": "catalog:",
+    "typescript-eslint": "8.46.1"
+  }
+}

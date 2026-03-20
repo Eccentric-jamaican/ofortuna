@@ -1,0 +1,7 @@
+{
+  "extends": "@ofortuna/config/tsconfig/base",
+  "compilerOptions": {
+    "lib": ["ES2022"]
+  },
+  "include": ["src/**/*.ts"]
+}

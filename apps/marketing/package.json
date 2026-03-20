@@ -1,0 +1,28 @@
+{
+  "name": "@ofortuna/marketing",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "typecheck": "astro check"
+  },
+  "dependencies": {
+    "@ofortuna/shared-types": "workspace:*",
+    "@ofortuna/ui": "workspace:*",
+    "@ofortuna/utils": "workspace:*",
+    "astro": "6.0.7",
+    "react": "catalog:",
+    "react-dom": "catalog:"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.8",
+    "@astrojs/cloudflare": "13.1.2",
+    "@astrojs/react": "5.0.1",
+    "@ofortuna/config": "workspace:*",
+    "@tailwindcss/vite": "4.2.2",
+    "typescript": "catalog:"
+  }
+}
