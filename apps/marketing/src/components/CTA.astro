@@ -1,0 +1,29 @@
+---
+import { buttonVariants } from "@ofortuna/ui/components/ui/button";
+import { ArrowRight } from "lucide-react";
+---
+
+<section id="pricing" class="relative py-24 md:py-28 overflow-hidden grain-overlay">
+  <div class="absolute inset-0 bg-[linear-gradient(135deg,#8f1014_0%,#a31217_34%,#7f1114_100%)] -z-10"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.14),transparent_32%),radial-gradient(circle_at_bottom_left,rgba(0,0,0,0.22),transparent_36%)] -z-10"></div>
+  <div class="absolute inset-0 -z-10 opacity-[0.04]" style="background-image: linear-gradient(rgba(255,255,255,.28) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.28) 1px, transparent 1px); background-size: 64px 64px;"></div>
+  <div class="pointer-events-none absolute left-1/2 top-0 h-40 w-[42rem] -translate-x-1/2 rounded-full bg-white/10 blur-3xl -z-10"></div>
+
+  <div class="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center">
+    <p class="mb-5 font-headline text-[11px] font-bold tracking-[0.22em] uppercase text-white/60">Join the waitlist</p>
+    <h2 class="font-headline text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-[-0.04em] text-white leading-[1.03] mb-6">
+      Start with Ofortuna.
+    </h2>
+    <p class="mx-auto max-w-2xl text-lg md:text-xl leading-relaxed font-light text-white/72">
+      Early access for founders who want a more organized way to move forward.
+    </p>
+
+    <div class="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+      <a href="#product" class={buttonVariants({ size: "lg", variant: "secondary", className: "h-14 rounded-md px-10 font-headline text-[15px] font-bold text-white shadow-xl transition-all duration-300 hover:scale-[1.01] hover:shadow-2xl" })}>
+        Get early access
+        <ArrowRight className="ml-2 h-4 w-4" />
+      </a>
+      <a href="#solutions" class={buttonVariants({ size: "lg", variant: "outline", className: "h-14 rounded-md border-white/20 bg-transparent px-10 font-headline text-[15px] font-semibold text-white transition-all duration-300 hover:border-white/35 hover:bg-white/10" })}>Talk to Sales</a>
+    </div>
+  </div>
+</section>

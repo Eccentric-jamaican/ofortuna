@@ -1,0 +1,200 @@
+---
+import {
+  ArrowRight,
+  Clock3,
+  FolderKanban,
+  HandCoins,
+  Landmark,
+  ListChecks,
+  Repeat2,
+} from "lucide-react";
+
+const features = [
+  {
+    title: "Get organized faster",
+    description:
+      "Start with what you know, and let Ofortuna help bring structure to everything else.",
+    icon: Clock3,
+    cta: "Learn about guided setup",
+    eyebrow: "Structured intake",
+    previewTitle: "Launch a Delaware C-Corp with two founders.",
+    previewBody:
+      "Ofortuna turns plain-language goals into a cleaner starting point with requirements, missing items, and next steps already outlined.",
+    previewItems: [
+      "Entity structure confirmed",
+      "Founder details collected",
+      "Priority checklist generated",
+    ],
+  },
+  {
+    title: "Cut down on back-and-forth",
+    description:
+      "Keep your records, updates, and matter details together, so the same information does not need to be repeated.",
+    icon: Repeat2,
+    cta: "Learn about shared context",
+    eyebrow: "One source of truth",
+    previewTitle: "Business details, documents, and updates stay in one thread.",
+    previewBody:
+      "Instead of restarting the conversation every time, everyone works from the same context and latest records.",
+    previewItems: [
+      "Matter notes in one place",
+      "Reusable company profile",
+      "Latest update visible to all",
+    ],
+  },
+  {
+    title: "Avoid preventable delays",
+    description:
+      "When your information is easier to access and your next steps are clearer, work moves forward with less friction.",
+    icon: ListChecks,
+    cta: "Learn about progress tracking",
+    eyebrow: "Clear next steps",
+    previewTitle: "See what is blocked, missing, and ready to move.",
+    previewBody:
+      "Ofortuna highlights open requirements so the work does not stall while people search for the next action.",
+    previewItems: [
+      "Missing items surfaced",
+      "Dependencies easier to spot",
+      "Deadlines easier to manage",
+    ],
+  },
+  {
+    title: "Make every paid hour go further",
+    description:
+      "When professional support is needed, a better-prepared matter means less time spent getting up to speed.",
+    icon: HandCoins,
+    cta: "Learn about professional-ready matters",
+    eyebrow: "Prepared before handoff",
+    previewTitle: "When support is needed, the matter is already organized.",
+    previewBody:
+      "Professionals can spend less time reconstructing context and more time helping move the matter forward.",
+    previewItems: [
+      "Records grouped by matter",
+      "Timeline already captured",
+      "Context ready for review",
+    ],
+  },
+  {
+    title: "Keep your records close",
+    description:
+      "Store important documents in one secure place, where they are easy to find when you need them.",
+    icon: Landmark,
+    cta: "Learn about the records vault",
+    eyebrow: "Centralized records",
+    previewTitle: "Formation docs, approvals, and company records live together.",
+    previewBody:
+      "Instead of digging through folders and email, your essential records stay accessible in one secure workspace.",
+    previewItems: [
+      "Formation documents stored",
+      "Approvals easy to retrieve",
+      "Operating records organized",
+    ],
+  },
+  {
+    title: "Stay on top of what matters",
+    description:
+      "Know what is done, what is still missing, and what needs your attention next.",
+    icon: FolderKanban,
+    cta: "Learn about the action dashboard",
+    eyebrow: "Action visibility",
+    previewTitle: "Track status, open items, and what needs attention next.",
+    previewBody:
+      "A clearer dashboard helps founders keep momentum without losing sight of what still needs to happen.",
+    previewItems: [
+      "Done vs pending visibility",
+      "Priority queue surfaced",
+      "Next action always visible",
+    ],
+  },
+];
+---
+
+<section id="resources" class="py-24 md:py-32 relative overflow-hidden">
+  <div class="absolute inset-0 -z-10 opacity-[0.015]" style="background-image: linear-gradient(rgba(0,0,0,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,.1) 1px, transparent 1px); background-size: 64px 64px;"></div>
+
+  <div class="max-w-7xl mx-auto px-8">
+    <div class="text-center mb-16 max-w-3xl mx-auto">
+      <p class="font-headline font-bold text-[11px] tracking-[0.2em] uppercase text-primary mb-4">Benefits</p>
+      <h2 class="font-headline text-3xl md:text-5xl font-extrabold tracking-[-0.03em] text-foreground mb-5">
+        Everything you need to move forward, in one place.
+      </h2>
+      <p class="text-muted-foreground text-lg font-light leading-relaxed">
+        Ofortuna helps you stay organized from the start, so you can move faster, avoid unnecessary delays, and make better use of your time and money.
+      </p>
+    </div>
+
+    <div class="space-y-16 md:space-y-20">
+      {features.map((feature, i) => (
+        <article class="group grid items-center gap-8 md:gap-10 lg:gap-14 md:grid-cols-12">
+          <div class:list={[
+            "flex flex-col justify-center",
+            i % 2 === 0 ? "md:col-span-4" : "md:col-span-4 md:order-2",
+          ]}>
+            <div class="w-12 h-12 rounded-lg bg-primary/[0.08] text-primary flex items-center justify-center mb-5">
+              <feature.icon className="w-5 h-5" />
+            </div>
+            <p class="mb-3 text-[11px] font-headline font-bold uppercase tracking-[0.18em] text-primary/80">{feature.eyebrow}</p>
+            <h3 class="font-headline text-2xl md:text-[2rem] font-bold tracking-[-0.03em] text-foreground mb-4">{feature.title}</h3>
+            <p class="text-[15px] leading-7 text-muted-foreground mb-5 max-w-sm">{feature.description}</p>
+            <a href="#pricing" class="inline-flex items-center gap-1.5 text-[13px] font-headline font-semibold text-primary transition-colors hover:text-primary/80">
+              {feature.cta}
+              <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
+
+          <div class:list={[
+            "relative",
+            i % 2 === 0 ? "md:col-span-8" : "md:col-span-8 md:order-1",
+          ]}>
+            <div class="relative h-full rounded-[18px] bg-gradient-to-br from-stone-100 via-white to-stone-50 p-3 transition-transform duration-500 ease-out group-hover:-translate-y-1">
+              <div class="pointer-events-none absolute inset-0 rounded-[18px] bg-[radial-gradient(circle_at_top_left,rgba(164,28,28,0.08),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(15,23,42,0.06),transparent_30%)]"></div>
+              <div class="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white to-transparent opacity-80"></div>
+              <div class="relative overflow-hidden rounded-[14px] border border-black/[0.06] bg-white min-h-[250px] shadow-[0_24px_60px_rgba(15,23,42,0.08)] transition-shadow duration-500 group-hover:shadow-[0_30px_80px_rgba(15,23,42,0.12)]">
+                <div class="pointer-events-none absolute inset-y-0 -left-1/3 w-1/3 bg-gradient-to-r from-transparent via-white/45 to-transparent opacity-0 skew-x-[-18deg] transition-all duration-700 group-hover:left-full group-hover:opacity-100"></div>
+                <div class="flex items-center gap-2 border-b border-black/[0.05] bg-[linear-gradient(180deg,rgba(248,248,249,0.95),rgba(241,241,243,0.95))] px-4 py-3">
+                  <span class="h-2.5 w-2.5 rounded-full bg-black/10"></span>
+                  <span class="h-2.5 w-2.5 rounded-full bg-black/10"></span>
+                  <span class="h-2.5 w-2.5 rounded-full bg-black/10"></span>
+                </div>
+
+                <div class="grid gap-0 md:grid-cols-12 h-full">
+                  <div class="border-b border-black/[0.05] bg-[linear-gradient(180deg,rgba(247,247,248,0.7),rgba(243,243,245,0.5))] px-4 py-4 md:col-span-5 md:border-b-0 md:border-r">
+                    <div class="mb-4 flex items-center justify-between">
+                      <div class="h-2 w-24 rounded-full bg-black/[0.06]"></div>
+                      <div class="h-5 w-14 rounded-full bg-primary/[0.08]"></div>
+                    </div>
+                    <div class="space-y-2.5">
+                      {feature.previewItems.map((item) => (
+                        <div class="flex items-center gap-2.5 rounded-md border border-black/[0.05] bg-white px-3 py-2.5 transition-colors duration-300 group-hover:bg-primary/[0.015]">
+                          <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-sm border border-primary/30 bg-white text-[9px] font-bold text-primary transition-colors duration-300 group-hover:bg-primary/[0.06]">✓</span>
+                          <span class="text-[12px] text-foreground/80">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div class="mt-4 rounded-md border border-dashed border-primary/20 bg-primary/[0.03] px-3 py-2.5 text-[12px] text-muted-foreground transition-colors duration-300 group-hover:bg-primary/[0.05]">
+                      Review required documents and confirm open items.
+                    </div>
+                  </div>
+
+                  <div class="px-4 py-4 md:col-span-7">
+                    <h4 class="max-w-md font-headline text-lg font-bold leading-6 tracking-[-0.02em] text-foreground mb-3">{feature.previewTitle}</h4>
+                    <p class="max-w-lg text-[13px] leading-6 text-muted-foreground mb-5">{feature.previewBody}</p>
+                    <div class="space-y-3">
+                      <div class="h-2 rounded-full bg-black/[0.05] overflow-hidden"><div class="h-full w-[78%] rounded-full bg-gradient-to-r from-primary/20 to-primary/5 transition-all duration-500 group-hover:w-[84%]"></div></div>
+                      <div class="h-2 w-[88%] rounded-full bg-black/[0.05] overflow-hidden"><div class="h-full w-[62%] rounded-full bg-gradient-to-r from-black/[0.08] to-black/[0.03]"></div></div>
+                      <div class="h-2 w-[72%] rounded-full bg-black/[0.05] overflow-hidden"><div class="h-full w-[46%] rounded-full bg-gradient-to-r from-black/[0.08] to-black/[0.03]"></div></div>
+                    </div>
+                    <div class="mt-5 flex flex-wrap gap-2.5">
+                      <span class="rounded-full border border-black/[0.06] bg-muted/20 px-3 py-1.5 text-[11px] font-medium text-foreground/80 transition-colors duration-300 group-hover:bg-white">Organized</span>
+                      <span class="rounded-full border border-black/[0.06] bg-muted/20 px-3 py-1.5 text-[11px] font-medium text-foreground/80 transition-colors duration-300 group-hover:bg-white">Ready to move</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
