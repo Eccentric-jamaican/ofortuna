@@ -1,0 +1,67 @@
+---
+import { Github, Twitter, Linkedin } from "lucide-react";
+---
+
+<footer class="w-full border-t border-black/[0.04] bg-muted/30 relative">
+  <div class="max-w-7xl mx-auto px-8 py-16 md:py-20">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+      <!-- Brand Column -->
+      <div class="md:col-span-4">
+        <div class="flex items-center gap-2 mb-5">
+          <div class="w-7 h-7 rounded-md bg-primary flex items-center justify-center">
+            <span class="text-white font-headline font-extrabold text-[11px]">O</span>
+          </div>
+          <span class="text-base font-headline font-extrabold tracking-tight text-foreground">Ofortuna</span>
+        </div>
+        <p class="text-sm text-muted-foreground leading-relaxed max-w-xs mb-6">Precision legal coordination and business formation operating system.</p>
+        <div class="flex gap-3">
+          <a href="#" class="w-9 h-9 rounded-md bg-muted/60 hover:bg-muted flex items-center justify-center transition-colors group">
+            <Linkedin className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors" />
+          </a>
+          <a href="#" class="w-9 h-9 rounded-md bg-muted/60 hover:bg-muted flex items-center justify-center transition-colors group">
+            <Twitter className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors" />
+          </a>
+          <a href="#" class="w-9 h-9 rounded-md bg-muted/60 hover:bg-muted flex items-center justify-center transition-colors group">
+            <Github className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors" />
+          </a>
+        </div>
+      </div>
+      
+      <!-- Links -->
+      <div class="md:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-8">
+        <div>
+          <h5 class="font-headline font-bold text-[11px] uppercase tracking-[0.15em] text-foreground mb-5">Product</h5>
+          <ul class="space-y-3">
+            <li><a class="text-sm text-muted-foreground hover:text-foreground transition-colors" href="#">Features</a></li>
+            <li><a class="text-sm text-muted-foreground hover:text-foreground transition-colors" href="#">Pricing</a></li>
+            <li><a class="text-sm text-muted-foreground hover:text-foreground transition-colors" href="#">Changelog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="font-headline font-bold text-[11px] uppercase tracking-[0.15em] text-foreground mb-5">Company</h5>
+          <ul class="space-y-3">
+            <li><a class="text-sm text-muted-foreground hover:text-foreground transition-colors" href="#">About</a></li>
+            <li><a class="text-sm text-muted-foreground hover:text-foreground transition-colors" href="#">Privacy Policy</a></li>
+            <li><a class="text-sm text-muted-foreground hover:text-foreground transition-colors" href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="font-headline font-bold text-[11px] uppercase tracking-[0.15em] text-foreground mb-5">Connect</h5>
+          <ul class="space-y-3">
+            <li><a class="text-sm text-muted-foreground hover:text-foreground transition-colors" href="#">LinkedIn</a></li>
+            <li><a class="text-sm text-muted-foreground hover:text-foreground transition-colors" href="#">Twitter</a></li>
+            <li><a class="text-sm text-muted-foreground hover:text-foreground transition-colors" href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Bottom bar -->
+  <div class="border-t border-black/[0.04]">
+    <div class="max-w-7xl mx-auto px-8 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-[12px] text-muted-foreground">© 2024 Ofortuna Legal. All rights reserved.</p>
+      <p class="text-[12px] text-muted-foreground/50 font-medium tracking-wide">Precision in Practice.</p>
+    </div>
+  </div>
+</footer>

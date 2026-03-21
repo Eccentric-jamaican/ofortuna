@@ -1,0 +1,251 @@
+---
+import {
+  ArrowRight,
+  BriefcaseBusiness,
+  Building2,
+  Dumbbell,
+  HardHat,
+  Scissors,
+  Stethoscope,
+  UtensilsCrossed,
+  Wrench,
+} from "lucide-react";
+
+const topRow = [
+  {
+    name: "Dental Practice",
+    cta: "See how to start a dental practice",
+    requirements: [
+      "Professional entity formation",
+      "State dental board compliance",
+      "HIPAA-ready record keeping",
+      "Multi-location management",
+    ],
+    role: "Clinical founders",
+    icon: Stethoscope,
+  },
+  {
+    name: "Plumbing & HVAC",
+    cta: "Register a plumbing or HVAC business",
+    requirements: [
+      "State contractor licensing",
+      "Insurance & bonding tracking",
+      "Service agreement templates",
+      "Employee certification logs",
+    ],
+    role: "Field service teams",
+    icon: Wrench,
+  },
+  {
+    name: "Hair & Beauty",
+    cta: "Incorporate a hair or beauty business",
+    requirements: [
+      "Salon or booth-rental setup",
+      "Cosmetology board compliance",
+      "Chair-rental agreements",
+      "Product inventory tracking",
+    ],
+    role: "Salon operators",
+    icon: Scissors,
+  },
+  {
+    name: "Real Estate",
+    cta: "See how to start a real estate business",
+    requirements: [
+      "Series LLC setup",
+      "Brokerage compliance docs",
+      "Transaction file management",
+      "Escrow & trust accounting",
+    ],
+    role: "Property founders",
+    icon: Building2,
+  },
+];
+
+const bottomRow = [
+  {
+    name: "Consulting",
+    cta: "Register a consulting business",
+    requirements: [
+      "Professional entity setup",
+      "Client agreement templates",
+      "IP & confidentiality clauses",
+      "Retainer & invoicing setup",
+    ],
+    role: "Professional services",
+    icon: BriefcaseBusiness,
+  },
+  {
+    name: "Restaurants",
+    cta: "See how to start a restaurant business",
+    requirements: [
+      "Food service entity setup",
+      "Health & alcohol permits",
+      "Franchise agreement review",
+      "Vendor & supply contracts",
+    ],
+    role: "Hospitality groups",
+    icon: UtensilsCrossed,
+  },
+  {
+    name: "Construction",
+    cta: "Incorporate a construction company",
+    requirements: [
+      "General contractor licensing",
+      "Lien and change-order logs",
+      "Subcontractor agreements",
+      "Prevailing wage compliance",
+    ],
+    role: "Trade businesses",
+    icon: HardHat,
+  },
+  {
+    name: "Fitness & Wellness",
+    cta: "See how to start a fitness business",
+    requirements: [
+      "Studio or gym formation",
+      "Waiver & release management",
+      "Membership agreement tracking",
+      "Equipment lease & financing",
+    ],
+    role: "Studio founders",
+    icon: Dumbbell,
+  },
+];
+---
+
+<section id="solutions" class="relative px-6 lg:px-8 py-16 lg:py-24 overflow-hidden">
+  <div class="max-w-3xl mx-auto text-center mb-10 lg:mb-14">
+    <p class="mb-4 text-[11px] font-headline font-bold tracking-[0.22em] uppercase text-primary">Built for founder-led businesses</p>
+    <h2 class="font-headline text-4xl md:text-5xl lg:text-[3.75rem] font-extrabold tracking-[-0.04em] leading-[1.02] text-foreground">
+      Set up the business. Keep the records. Coordinate the legal work.
+    </h2>
+    <p class="mt-5 text-base md:text-lg text-muted-foreground leading-relaxed">
+      Ofortuna supports founders across service businesses and professional practices with structured intake, record management, and better-prepared matters.
+    </p>
+  </div>
+
+  <div class="relative space-y-5 lg:space-y-6">
+
+    <div class="marquee-row marquee-left">
+      {[...topRow, ...topRow].map((item) => {
+        const Icon = item.icon;
+        return <article class="marquee-card flex flex-col">
+            <div class="flex items-start gap-3 mb-3">
+              <div class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/[0.08] text-primary">
+                <Icon className="h-4 w-4" />
+              </div>
+              <span class="pt-0.5 font-headline text-lg font-bold tracking-[-0.02em] text-foreground">{item.name}</span>
+            </div>
+
+            <div class="space-y-1 text-sm text-muted-foreground">
+              {item.requirements.map((req) => (
+                <div class="flex items-center gap-2">
+                  <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded border border-primary/30 text-[9px] font-bold leading-none text-primary">
+                    ✓
+                  </span>
+                  <span class="leading-6">{req}</span>
+                </div>
+              ))}
+            </div>
+
+            <div class="mt-auto pt-4">
+              <a href="#pricing" class="inline-flex items-center gap-1.5 text-[12px] font-headline font-bold tracking-[-0.01em] text-primary/80 transition-colors hover:text-primary">
+                {item.cta}
+                <ArrowRight className="h-3.5 w-3.5" />
+              </a>
+            </div>
+
+        </article>;
+      })}
+    </div>
+
+    <div class="marquee-row marquee-right">
+      {[...bottomRow, ...bottomRow].map((item) => {
+        const Icon = item.icon;
+        return <article class="marquee-card flex flex-col">
+            <div class="flex items-start gap-3 mb-3">
+              <div class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/[0.08] text-primary">
+                <Icon className="h-4 w-4" />
+              </div>
+              <span class="pt-0.5 font-headline text-lg font-bold tracking-[-0.02em] text-foreground">{item.name}</span>
+            </div>
+
+            <div class="space-y-1 text-sm text-muted-foreground">
+              {item.requirements.map((req) => (
+                <div class="flex items-center gap-2">
+                  <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded border border-primary/30 text-[9px] font-bold leading-none text-primary">
+                    ✓
+                  </span>
+                  <span class="leading-6">{req}</span>
+                </div>
+              ))}
+            </div>
+
+            <div class="mt-auto pt-4">
+              <a href="#pricing" class="inline-flex items-center gap-1.5 text-[12px] font-headline font-bold tracking-[-0.01em] text-primary/80 transition-colors hover:text-primary">
+                {item.cta}
+                <ArrowRight className="h-3.5 w-3.5" />
+              </a>
+            </div>
+
+        </article>;
+      })}
+    </div>
+  </div>
+</section>
+
+<style>
+  .marquee-row {
+    display: flex;
+    gap: 1.5rem;
+    width: max-content;
+    padding-inline: 1rem;
+  }
+
+  .marquee-card {
+    width: min(18rem, calc(100vw - 6rem));
+    min-height: 16rem;
+    padding: 1.25rem;
+    border-radius: 1.25rem;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 248, 250, 0.98) 100%);
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.04);
+    flex-shrink: 0;
+  }
+
+  .marquee-left {
+    animation: marquee-left 42s linear infinite;
+  }
+
+  .marquee-right {
+    animation: marquee-right 42s linear infinite;
+  }
+
+  .marquee-left:hover,
+  .marquee-right:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee-left {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  @keyframes marquee-right {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
+  }
+
+  @media (max-width: 768px) {
+    .marquee-card {
+      min-height: 16.5rem;
+      padding: 1.25rem;
+    }
+
+    .marquee-left,
+    .marquee-right {
+      animation-duration: 32s;
+    }
+  }
+</style>

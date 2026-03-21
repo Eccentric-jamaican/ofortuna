@@ -1,5 +1,11 @@
 ---
-import { Button } from "@ofortuna/ui/components/ui/button";
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero.astro";
+import VerticalsMarquee from "../components/VerticalsMarquee.astro";
+import BentoGrid from "../components/BentoGrid.astro";
+import Features from "../components/Features.astro";
+import CTA from "../components/CTA.astro";
+import Footer from "../components/Footer.astro";
 import "../styles/globals.css";
 ---
 
@@ -7,19 +13,22 @@ import "../styles/globals.css";
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Ofortuna Marketing</title>
+    <title>Ofortuna | Structure. Clarity. Continuity.</title>
+    <!-- Fonts and Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
   </head>
-  <body>
-    <main class="flex min-h-screen items-center justify-center px-6 py-24">
-      <section class="max-w-3xl space-y-6 text-center">
-        <p class="text-sm font-medium uppercase tracking-[0.3em] text-muted-foreground">Ofortuna Marketing</p>
-        <h1 class="font-serif text-5xl tracking-tight text-foreground sm:text-6xl">Astro is ready to render shared shadcn components.</h1>
-        <p class="text-lg leading-8 text-muted-foreground">The marketing app now shares the same UI package as the web app, so your landing pages can use the same design primitives from day one.</p>
-        <div class="flex items-center justify-center gap-3">
-          <Button>Shared shadcn button</Button>
-          <Button variant="outline">Marketing is wired</Button>
-        </div>
-      </section>
+  <body class="bg-background font-body text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+    <Navbar />
+    <main class="pt-20">
+      <Hero />
+      <VerticalsMarquee />
+      <BentoGrid />
+      <Features />
+      <CTA />
     </main>
+    <Footer />
   </body>
 </html>

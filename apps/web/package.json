@@ -16,6 +16,7 @@
     "@ofortuna/ui": "workspace:*",
     "@ofortuna/utils": "workspace:*",
     "convex": "1.34.0",
+    "effect": "3.21.0",
     "next": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:"

@@ -1,6 +1,9 @@
 import { ConvexStatus } from "@/components/convex-status";
+import { getEffectHealthLabel } from "@/lib/effect-health";
 
 export default function Home() {
+  const effectHealth = getEffectHealthLabel();
+
   return (
     <main className="flex min-h-screen items-center justify-center px-6 py-24">
       <div className="max-w-2xl space-y-4 text-center">
@@ -13,6 +16,7 @@ export default function Home() {
         <p className="text-lg leading-8 text-stone-600">
           Next.js now lives in <code>apps/web</code>, ready for Convex, WorkOS, and the matter workspace.
         </p>
+        <p className="text-sm text-stone-500">Runtime layer: {effectHealth}</p>
         <div className="pt-4">
           <ConvexStatus />
         </div>

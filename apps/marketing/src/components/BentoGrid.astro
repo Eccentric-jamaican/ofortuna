@@ -1,0 +1,90 @@
+---
+import { Badge } from "@ofortuna/ui/components/ui/badge";
+import {
+  Mail,
+  MessageSquare,
+  FileWarning,
+  CheckCircle2,
+  ShieldCheck
+} from "lucide-react";
+---
+
+<section class="py-28 md:py-36 bg-muted/30 relative overflow-hidden">
+  <!-- Section background accent -->
+  <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
+
+  <div class="max-w-7xl mx-auto px-8">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <h2 class="font-headline text-3xl md:text-5xl font-extrabold tracking-[-0.03em] text-foreground">Legal work is <span class="text-primary">fragmented</span></h2>
+    </div>
+
+    <div class="grid md:grid-cols-12 gap-6">
+      <!-- Fragmentation Card -->
+      <div class="md:col-span-5 bg-white p-8 md:p-10 rounded-xl editorial-shadow-lg border border-black/[0.04] relative overflow-hidden group hover:border-primary/10 transition-all duration-500">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-primary/[0.02] rounded-full blur-2xl group-hover:bg-primary/[0.05] transition-colors duration-700"></div>
+        <h3 class="font-headline text-xl font-bold mb-6 text-foreground">The Fragmentation</h3>
+        <div class="space-y-3">
+          <div class="flex items-center gap-4 p-3.5 bg-destructive/[0.04] rounded-lg border border-destructive/8 group/item hover:border-destructive/15 transition-all duration-300">
+            <div class="w-9 h-9 rounded-md bg-destructive/8 flex items-center justify-center shrink-0">
+              <Mail className="w-4 h-4 text-destructive" />
+            </div>
+            <div>
+              <span class="text-sm font-semibold text-foreground block">Scattered Email Chains</span>
+              <span class="text-[11px] text-muted-foreground">Lost context across multiple threads</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 p-3.5 bg-destructive/[0.04] rounded-lg border border-destructive/8 group/item hover:border-destructive/15 transition-all duration-300">
+            <div class="w-9 h-9 rounded-md bg-destructive/8 flex items-center justify-center shrink-0">
+              <MessageSquare className="w-4 h-4 text-destructive" />
+            </div>
+            <div>
+              <span class="text-sm font-semibold text-foreground block">Lost Messages</span>
+              <span class="text-[11px] text-muted-foreground">Critical decisions buried in DMs</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 p-3.5 bg-destructive/[0.04] rounded-lg border border-destructive/8 group/item hover:border-destructive/15 transition-all duration-300">
+            <div class="w-9 h-9 rounded-md bg-destructive/8 flex items-center justify-center shrink-0">
+              <FileWarning className="w-4 h-4 text-destructive" />
+            </div>
+            <div>
+              <span class="text-sm font-semibold text-foreground block">Version Chaos</span>
+              <span class="text-[11px] text-muted-foreground">No single source of truth</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Solution Card -->
+      <div class="md:col-span-7 bg-foreground text-background p-8 md:p-12 rounded-2xl editorial-shadow-lg flex flex-col justify-between relative overflow-hidden group">
+        <!-- Decorative gradient -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-primary/20 to-transparent rounded-full blur-3xl opacity-60 group-hover:opacity-100 transition-opacity duration-700"></div>
+        <div class="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-white/5 to-transparent rounded-full blur-2xl"></div>
+
+        <div class="relative z-10">
+          <Badge className="bg-primary hover:bg-primary/90 text-white text-[10px] font-bold tracking-[0.12em] uppercase mb-6 py-1.5 px-3 shadow-sm">The Solution</Badge>
+          <h3 class="font-headline text-3xl md:text-4xl font-extrabold mb-6 leading-[1.1] tracking-[-0.02em]">
+            One Organized<br />Environment.
+          </h3>
+          <p class="text-lg text-white/60 max-w-lg leading-relaxed font-light">
+            Ofortuna captures every input, document, and decision into a structured "Matter&nbsp;Workspace" — ensuring continuity from the first conversation to the final signature.
+          </p>
+        </div>
+
+        <!-- Visual accent -->
+        <div class="relative z-10 mt-8 flex flex-wrap gap-4">
+          <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.08] border border-white/[0.08] text-[11px] text-white/70">
+            <CheckCircle2 className="w-3.5 h-3.5 text-primary" />
+            Single source of truth
+          </div>
+          <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.08] border border-white/[0.08] text-[11px] text-white/70">
+            <ShieldCheck className="w-3.5 h-3.5 text-primary" />
+            Audit-ready vault
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
+</section>
