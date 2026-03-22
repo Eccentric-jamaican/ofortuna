@@ -24,6 +24,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@ofortuna/ui/components/ui/tooltip"
+import { Kbd, KbdGroup } from "@ofortuna/ui/components/ui/kbd"
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
@@ -187,7 +188,7 @@ function Sidebar({
           data-sidebar="sidebar"
           data-slot="sidebar"
           data-mobile="true"
-          className="w-(--sidebar-width) bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden"
+          className="w-(--sidebar-width) bg-background p-0 text-sidebar-foreground [&>button]:hidden shadow-2xl border-r"
           style={
             {
               "--sidebar-width": SIDEBAR_WIDTH_MOBILE,
@@ -236,7 +237,7 @@ function Sidebar({
           // Adjust the padding for floating and inset variants.
           variant === "floating" || variant === "inset"
             ? "p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4))+2px)]"
-            : "group-data-[collapsible=icon]:w-(--sidebar-width-icon) group-data-[side=left]:border-r group-data-[side=right]:border-l",
+            : "group-data-[collapsible=icon]:w-(--sidebar-width-icon)",
           className
         )}
         {...props}
@@ -258,24 +259,56 @@ function SidebarTrigger({
   onClick,
   ...props
 }: React.ComponentProps<typeof Button>) {
-  const { toggleSidebar } = useSidebar()
+  const { toggleSidebar, state } = useSidebar()
+  const [isMacState, setIsMacState] = React.useState(false)
+
+  React.useEffect(() => {
+    const isMacPlatform =
+      typeof navigator !== "undefined" &&
+      /Mac|iPod|iPhone|iPad/.test(navigator.platform)
+
+    setIsMacState(isMacPlatform)
+  }, [])
 
   return (
-    <Button
-      data-sidebar="trigger"
-      data-slot="sidebar-trigger"
-      variant="ghost"
-      size="icon"
-      className={cn("size-7", className)}
-      onClick={(event) => {
-        onClick?.(event)
-        toggleSidebar()
-      }}
-      {...props}
-    >
-      <PanelLeftIcon />
-      <span className="sr-only">Toggle Sidebar</span>
-    </Button>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Button
+          data-sidebar="trigger"
+          data-slot="sidebar-trigger"
+          variant="ghost"
+          size="icon"
+          className={cn(
+            "size-8 rounded-lg text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground active:bg-accent/80 cursor-ew-resize",
+            className
+          )}
+          onClick={(event) => {
+            onClick?.(event)
+            toggleSidebar()
+          }}
+          {...props}
+        >
+          <PanelLeftIcon className="size-4.5 text-current" />
+          <span className="sr-only">Toggle Sidebar</span>
+        </Button>
+      </TooltipTrigger>
+      <TooltipContent 
+        side="right" 
+        align="center" 
+        sideOffset={8}
+        className="bg-popover text-popover-foreground border border-border shadow-sm font-medium py-1.5 px-3 flex items-center gap-3 animate-in fade-in-0 zoom-in-95"
+      >
+        <span className="text-sm">
+          {state === "expanded" ? "Close sidebar" : "Open sidebar"}
+        </span>
+        <KbdGroup className="gap-1">
+          <Kbd className="bg-muted text-muted-foreground border border-border text-[11px] h-5 min-w-5 px-1.5 font-sans font-semibold">
+            {isMacState ? "⌘" : "Ctrl"}
+          </Kbd>
+          <Kbd className="bg-muted text-muted-foreground border border-border text-[11px] h-5 min-w-5 px-1.5 font-sans font-semibold">B</Kbd>
+        </KbdGroup>
+      </TooltipContent>
+    </Tooltip>
   )
 }
 
@@ -292,8 +325,7 @@ function SidebarRail({ className, ...props }: React.ComponentProps<"button">) {
       title="Toggle Sidebar"
       className={cn(
         "absolute inset-y-0 z-20 hidden w-4 -translate-x-1/2 transition-all ease-linear group-data-[side=left]:-right-4 group-data-[side=right]:left-0 after:absolute after:inset-y-0 after:left-1/2 after:w-[2px] hover:after:bg-sidebar-border sm:flex",
-        "in-data-[side=left]:cursor-w-resize in-data-[side=right]:cursor-e-resize",
-        "[[data-side=left][data-state=collapsed]_&]:cursor-e-resize [[data-side=right][data-state=collapsed]_&]:cursor-w-resize",
+        "cursor-ew-resize",
         "group-data-[collapsible=offcanvas]:translate-x-0 group-data-[collapsible=offcanvas]:after:left-full hover:group-data-[collapsible=offcanvas]:bg-sidebar",
         "[[data-side=left][data-collapsible=offcanvas]_&]:-right-2",
         "[[data-side=right][data-collapsible=offcanvas]_&]:-left-2",
@@ -522,7 +554,7 @@ function SidebarMenuButton({
     />
   )
 
-  if (!tooltip) {
+  if (tooltip == null || tooltip === "") {
     return button
   }
 
@@ -606,10 +638,7 @@ function SidebarMenuSkeleton({
 }: React.ComponentProps<"div"> & {
   showIcon?: boolean
 }) {
-  // Random width between 50 to 90%.
-  const width = React.useMemo(() => {
-    return `${Math.floor(Math.random() * 40) + 50}%`
-  }, [])
+  const width = showIcon ? "68%" : "76%"
 
   return (
     <div
