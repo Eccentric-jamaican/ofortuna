@@ -3,7 +3,10 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@ofortuna/ui/*": ["../../packages/ui/src/*"],
+      "@ofortuna/shared-types/*": ["../../packages/shared-types/src/*"],
+      "@ofortuna/utils/*": ["../../packages/utils/src/*"]
     }
   },
   "include": [
