@@ -188,11 +188,10 @@ function Sidebar({
           data-sidebar="sidebar"
           data-slot="sidebar"
           data-mobile="true"
-          className="w-(--sidebar-width) bg-background !bg-background p-0 text-sidebar-foreground [&>button]:hidden shadow-2xl border-r"
+          className="w-(--sidebar-width) bg-background p-0 text-sidebar-foreground [&>button]:hidden shadow-2xl border-r"
           style={
             {
               "--sidebar-width": SIDEBAR_WIDTH_MOBILE,
-              "backgroundColor": "var(--background)",
             } as React.CSSProperties
           }
           side={side}
@@ -201,7 +200,7 @@ function Sidebar({
             <SheetTitle>Sidebar</SheetTitle>
             <SheetDescription>Displays the mobile sidebar.</SheetDescription>
           </SheetHeader>
-          <div className="flex h-full w-full flex-col bg-background">{children}</div>
+          <div className="flex h-full w-full flex-col">{children}</div>
         </SheetContent>
       </Sheet>
     )
@@ -261,6 +260,9 @@ function SidebarTrigger({
   ...props
 }: React.ComponentProps<typeof Button>) {
   const { toggleSidebar, state } = useSidebar()
+  const isMac =
+    typeof navigator !== "undefined" &&
+    /Mac|iPod|iPhone|iPad/.test(navigator.platform)
 
   return (
     <Tooltip>
@@ -271,7 +273,7 @@ function SidebarTrigger({
           variant="ghost"
           size="icon"
           className={cn(
-            "size-8 rounded-lg transition-colors hover:bg-[#f1f5f9] active:bg-[#e2e8f0] cursor-ew-resize", 
+            "size-8 rounded-lg text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground active:bg-accent/80 cursor-ew-resize",
             className
           )}
           onClick={(event) => {
@@ -280,7 +282,7 @@ function SidebarTrigger({
           }}
           {...props}
         >
-          <PanelLeftIcon className="size-4.5 text-[#5a6061]" />
+          <PanelLeftIcon className="size-4.5 text-current" />
           <span className="sr-only">Toggle Sidebar</span>
         </Button>
       </TooltipTrigger>
@@ -288,14 +290,16 @@ function SidebarTrigger({
         side="right" 
         align="center" 
         sideOffset={8}
-        className="bg-[#fdfcf6] text-[#2d3435] border border-[#e2e8f0] shadow-sm font-medium py-1.5 px-3 flex items-center gap-3 animate-in fade-in-0 zoom-in-95"
+        className="bg-popover text-popover-foreground border border-border shadow-sm font-medium py-1.5 px-3 flex items-center gap-3 animate-in fade-in-0 zoom-in-95"
       >
         <span className="text-sm">
           {state === "expanded" ? "Close sidebar" : "Open sidebar"}
         </span>
         <KbdGroup className="gap-1">
-          <Kbd className="bg-[#efeee3] text-[#5a6061] border-none text-[11px] h-5 min-w-5 px-1.5 font-sans font-semibold">Ctrl</Kbd>
-          <Kbd className="bg-[#efeee3] text-[#5a6061] border-none text-[11px] h-5 min-w-5 px-1.5 font-sans font-semibold">B</Kbd>
+          <Kbd className="bg-muted text-muted-foreground border border-border text-[11px] h-5 min-w-5 px-1.5 font-sans font-semibold">
+            {isMac ? "⌘" : "Ctrl"}
+          </Kbd>
+          <Kbd className="bg-muted text-muted-foreground border border-border text-[11px] h-5 min-w-5 px-1.5 font-sans font-semibold">B</Kbd>
         </KbdGroup>
       </TooltipContent>
     </Tooltip>
@@ -544,7 +548,7 @@ function SidebarMenuButton({
     />
   )
 
-  if (!tooltip) {
+  if (tooltip == null) {
     return button
   }
 
@@ -628,10 +632,7 @@ function SidebarMenuSkeleton({
 }: React.ComponentProps<"div"> & {
   showIcon?: boolean
 }) {
-  // Random width between 50 to 90%.
-  const width = React.useMemo(() => {
-    return `${Math.floor(Math.random() * 40) + 50}%`
-  }, [])
+  const width = showIcon ? "68%" : "76%"
 
   return (
     <div

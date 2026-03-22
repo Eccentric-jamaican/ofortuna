@@ -25,6 +25,7 @@ type MatterStartingPoint = {
   status: string
   icon: LucideIcon
   previewClassName: string
+  showActions?: boolean
 }
 
 type PromptComposerSurfaceProps = {
@@ -48,6 +49,7 @@ const matterStartingPoints: readonly MatterStartingPoint[] = [
     updatedAt: "Edited 15 Jul 2025",
     status: "Prepared",
     icon: Workflow,
+    showActions: true,
     previewClassName:
       "bg-[radial-gradient(circle_at_top_right,rgba(145,16,20,0.18),transparent_28%),linear-gradient(145deg,#1f1814,#32241f_45%,#6a3425)] before:absolute before:-left-8 before:top-4 before:h-40 before:w-72 before:rotate-6 before:rounded-full before:border before:border-white/10 before:opacity-60 before:blur-[1px] after:absolute after:-right-10 after:bottom-2 after:h-32 after:w-56 after:-rotate-6 after:rounded-full after:border after:border-white/10 after:opacity-40",
   },
@@ -293,15 +295,18 @@ export function DashboardPromptComposer() {
           </div>
 
           <div className="grid gap-x-6 gap-y-8 md:grid-cols-3">
-            {matterStartingPoints.map(({ title, updatedAt, status, icon: Icon, previewClassName }, index) => (
+            {matterStartingPoints.map(({ title, updatedAt, status, icon: Icon, previewClassName, showActions }) => (
               <article key={title} className="group">
                 <div
-                  className={`relative aspect-[1.28/0.82] overflow-hidden rounded-[1.2rem] border border-border/15 ${previewClassName}`}
+                  className={cn(
+                    "relative aspect-[1.28/0.82] overflow-hidden rounded-[1.2rem] border border-border/15",
+                    previewClassName
+                  )}
                 >
                   <span className="absolute left-4 bottom-4 rounded-[0.65rem] bg-black/55 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
                     {status}
                   </span>
-                  {index === 1 ? (
+                  {showActions === true ? (
                     <div className="absolute right-4 top-4 flex items-center gap-1.5">
                       <button
                         type="button"

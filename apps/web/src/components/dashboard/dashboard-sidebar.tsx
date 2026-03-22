@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import {
   Compass,
@@ -58,7 +59,7 @@ const mainNavItems = [
 
 const projectsItems = [
   {
-    title: "All matters ",
+    title: "All matters",
     url: "/dashboard/matters",
     icon: LayoutGrid,
   },
@@ -84,11 +85,14 @@ const projectsItems = [
   },
 ]
 
-import Image from "next/image"
-
 export function DashboardSidebar() {
   const pathname = usePathname()
   const { state } = useSidebar()
+  const [showAllProjects, setShowAllProjects] = React.useState(false)
+
+  const visibleProjects = showAllProjects
+    ? projectsItems
+    : projectsItems.slice(0, 4)
 
   return (
     <Sidebar collapsible="icon">
@@ -97,7 +101,7 @@ export function DashboardSidebar() {
           <Link href="/" className="flex items-center gap-3 font-semibold group-data-[collapsible=icon]:hidden">
             <div className="relative flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-lg">
               <Image
-                src="/Ofortuna logo.svg"
+                src="/ofortuna-logo.svg"
                 alt="Ofortuna"
                 fill
                 className="object-cover"
@@ -123,7 +127,7 @@ export function DashboardSidebar() {
                   <SidebarMenuButton
                     size="lg"
                     className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground group-data-[collapsible=icon]:size-8 rounded-lg editorial-shadow"
-                    tooltip={state === "collapsed" ? "Addis&apos;s Lovable" : ""}
+                    tooltip={state === "collapsed" ? "Addis's Lovable" : ""}
                   >
                     <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground font-bold shrink-0">
                       A
@@ -169,7 +173,7 @@ export function DashboardSidebar() {
         <SidebarGroup className="group-data-[collapsible=icon]:hidden">
           <SidebarGroupLabel>Projects</SidebarGroupLabel>
           <SidebarMenu>
-            {projectsItems.map((item) => (
+            {visibleProjects.map((item) => (
               <SidebarMenuItem key={item.title}>
                 <SidebarMenuButton asChild isActive={pathname === item.url} tooltip={item.title}>
                   <Link href={item.url}>
@@ -180,9 +184,14 @@ export function DashboardSidebar() {
               </SidebarMenuItem>
             ))}
             <SidebarMenuItem>
-              <SidebarMenuButton className="text-sidebar-foreground/70">
-                <ChevronDown className="size-4" />
-                <span>Show more</span>
+              <SidebarMenuButton
+                className="text-sidebar-foreground/70"
+                onClick={() => setShowAllProjects((current) => !current)}
+              >
+                <ChevronDown
+                  className={showAllProjects ? "size-4 rotate-180 transition-transform" : "size-4 transition-transform"}
+                />
+                <span>{showAllProjects ? "Show less" : "Show more"}</span>
               </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>
