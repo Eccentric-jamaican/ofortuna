@@ -260,9 +260,15 @@ function SidebarTrigger({
   ...props
 }: React.ComponentProps<typeof Button>) {
   const { toggleSidebar, state } = useSidebar()
-  const isMac =
-    typeof navigator !== "undefined" &&
-    /Mac|iPod|iPhone|iPad/.test(navigator.platform)
+  const [isMacState, setIsMacState] = React.useState(false)
+
+  React.useEffect(() => {
+    const isMacPlatform =
+      typeof navigator !== "undefined" &&
+      /Mac|iPod|iPhone|iPad/.test(navigator.platform)
+
+    setIsMacState(isMacPlatform)
+  }, [])
 
   return (
     <Tooltip>
@@ -297,7 +303,7 @@ function SidebarTrigger({
         </span>
         <KbdGroup className="gap-1">
           <Kbd className="bg-muted text-muted-foreground border border-border text-[11px] h-5 min-w-5 px-1.5 font-sans font-semibold">
-            {isMac ? "⌘" : "Ctrl"}
+            {isMacState ? "⌘" : "Ctrl"}
           </Kbd>
           <Kbd className="bg-muted text-muted-foreground border border-border text-[11px] h-5 min-w-5 px-1.5 font-sans font-semibold">B</Kbd>
         </KbdGroup>
@@ -548,7 +554,7 @@ function SidebarMenuButton({
     />
   )
 
-  if (tooltip == null) {
+  if (tooltip == null || tooltip === "") {
     return button
   }
 

@@ -35,14 +35,22 @@ type PromptComposerSurfaceProps = {
   compact?: boolean
 }
 
+const formationPreviewClassName =
+  "bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(244,239,233,0.96))] before:absolute before:inset-x-10 before:top-8 before:h-px before:bg-border/30 after:absolute after:left-10 after:top-10 after:h-28 after:w-40 after:rounded-[1rem] after:border after:border-border/20 after:bg-white/75"
+
+const recordsPreviewClassName =
+  "bg-[radial-gradient(circle_at_top_right,rgba(145,16,20,0.18),transparent_28%),linear-gradient(145deg,#1f1814,#32241f_45%,#6a3425)] before:absolute before:-left-8 before:top-4 before:h-40 before:w-72 before:rotate-6 before:rounded-full before:border before:border-white/10 before:opacity-60 before:blur-[1px] after:absolute after:-right-10 after:bottom-2 after:h-32 after:w-56 after:-rotate-6 after:rounded-full after:border after:border-white/10 after:opacity-40"
+
+const readinessPreviewClassName =
+  "bg-[linear-gradient(180deg,#2d2437,#2a2233)] before:absolute inset-0 before:bg-[linear-gradient(rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] before:bg-[size:3.8rem_3.8rem] after:absolute after:inset-x-0 after:top-0 after:h-full after:bg-[radial-gradient(circle_at_center,rgba(145,16,20,0.16),transparent_55%)]"
+
 const matterStartingPoints: readonly MatterStartingPoint[] = [
   {
     title: "Formation strategy",
     updatedAt: "Edited 3 Jan 2026",
     status: "Active",
     icon: BriefcaseBusiness,
-    previewClassName:
-      "bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(244,239,233,0.96))] before:absolute before:inset-x-10 before:top-8 before:h-px before:bg-border/30 after:absolute after:left-10 after:top-10 after:h-28 after:w-40 after:rounded-[1rem] after:border after:border-border/20 after:bg-white/75",
+    previewClassName: formationPreviewClassName,
   },
   {
     title: "Records and governance",
@@ -50,16 +58,14 @@ const matterStartingPoints: readonly MatterStartingPoint[] = [
     status: "Prepared",
     icon: Workflow,
     showActions: true,
-    previewClassName:
-      "bg-[radial-gradient(circle_at_top_right,rgba(145,16,20,0.18),transparent_28%),linear-gradient(145deg,#1f1814,#32241f_45%,#6a3425)] before:absolute before:-left-8 before:top-4 before:h-40 before:w-72 before:rotate-6 before:rounded-full before:border before:border-white/10 before:opacity-60 before:blur-[1px] after:absolute after:-right-10 after:bottom-2 after:h-32 after:w-56 after:-rotate-6 after:rounded-full after:border after:border-white/10 after:opacity-40",
+    previewClassName: recordsPreviewClassName,
   },
   {
     title: "Readiness review",
     updatedAt: "Edited 21 Jul 2025",
     status: "Review",
     icon: ShieldCheck,
-    previewClassName:
-      "bg-[linear-gradient(180deg,#2d2437,#2a2233)] before:absolute inset-0 before:bg-[linear-gradient(rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] before:bg-[size:3.8rem_3.8rem] after:absolute after:inset-x-0 after:top-0 after:h-full after:bg-[radial-gradient(circle_at_center,rgba(145,16,20,0.16),transparent_55%)]",
+    previewClassName: readinessPreviewClassName,
   },
 ]
 
@@ -308,20 +314,24 @@ export function DashboardPromptComposer() {
                   </span>
                   {showActions === true ? (
                     <div className="absolute right-4 top-4 flex items-center gap-1.5">
-                      <button
+                      <Button
                         type="button"
-                        className="flex size-9 items-center justify-center rounded-[0.8rem] bg-white/86 text-foreground shadow-sm transition-colors hover:bg-white"
+                        variant="ghost"
+                        size="icon"
+                        className="size-9 rounded-[0.8rem] bg-white/86 text-foreground shadow-sm hover:bg-white"
                         aria-label="Open external link"
                       >
                         <Link2 className="size-4" />
-                      </button>
-                      <button
+                      </Button>
+                      <Button
                         type="button"
-                        className="flex size-9 items-center justify-center rounded-[0.8rem] bg-white/86 text-foreground shadow-sm transition-colors hover:bg-white"
+                        variant="ghost"
+                        size="icon"
+                        className="size-9 rounded-[0.8rem] bg-white/86 text-foreground shadow-sm hover:bg-white"
                         aria-label="More options"
                       >
                         <MoreHorizontal className="size-4" />
-                      </button>
+                      </Button>
                     </div>
                   ) : null}
                 </div>
@@ -367,14 +377,16 @@ export function DashboardPromptComposer() {
                   compact
                 />
               ) : (
-                <button
+                <Button
                   type="button"
-                  className="mx-auto flex items-center gap-2 rounded-full border border-border/20 bg-[rgba(252,248,242,0.95)] px-4 py-2 text-sm font-medium text-foreground shadow-[0_10px_30px_rgba(45,52,53,0.08)] transition-colors hover:bg-white"
+                  variant="outline"
+                  size="sm"
+                  className="mx-auto gap-2 rounded-full border-border/20 bg-[rgba(252,248,242,0.95)] px-4 py-2 text-sm font-medium text-foreground shadow-[0_10px_30px_rgba(45,52,53,0.08)] hover:bg-white"
                   aria-label="Open floating prompt composer"
                 >
                   <Paperclip className="size-4" />
                   Continue drafting
-                </button>
+                </Button>
               )}
             </div>
           ) : null}

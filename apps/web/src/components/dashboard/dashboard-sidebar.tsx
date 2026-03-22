@@ -38,24 +38,13 @@ import {
 } from "@ofortuna/ui/components/ui/dropdown-menu"
 import { Kbd } from "@ofortuna/ui/components/ui/kbd"
 
-const mainNavItems = [
-  {
-    title: "Home",
-    url: "/dashboard",
-    icon: Home,
-  },
-  {
-    title: "Search",
-    url: "#",
-    icon: Search,
-    trailing: <Kbd className="ml-auto">Ctrl K</Kbd>,
-  },
-  {
-    title: "Resources",
-    url: "/dashboard/resources",
-    icon: Compass,
-  },
-]
+type MainNavigationItem = {
+  title: string
+  icon: typeof Home
+  url?: string
+  trailing?: React.ReactNode
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
+}
 
 const projectsItems = [
   {
@@ -89,10 +78,40 @@ export function DashboardSidebar() {
   const pathname = usePathname()
   const { state } = useSidebar()
   const [showAllProjects, setShowAllProjects] = React.useState(false)
+  const [modifierKeyLabel, setModifierKeyLabel] = React.useState("Ctrl")
+
+  React.useEffect(() => {
+    const isMacPlatform =
+      typeof navigator !== "undefined" &&
+      /Mac|iPod|iPhone|iPad/.test(navigator.platform)
+
+    setModifierKeyLabel(isMacPlatform ? "⌘" : "Ctrl")
+  }, [])
 
   const visibleProjects = showAllProjects
     ? projectsItems
     : projectsItems.slice(0, 4)
+
+  const mainNavigationItems: readonly MainNavigationItem[] = [
+    {
+      title: "Home",
+      url: "/dashboard",
+      icon: Home,
+    },
+    {
+      title: "Search",
+      icon: Search,
+      trailing: <Kbd className="ml-auto">{modifierKeyLabel} K</Kbd>,
+      onClick: (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault()
+      },
+    },
+    {
+      title: "Resources",
+      url: "/dashboard/resources",
+      icon: Compass,
+    },
+  ] as const
 
   return (
     <Sidebar collapsible="icon">
@@ -150,20 +169,33 @@ export function DashboardSidebar() {
         {/* Main Navigation */}
         <SidebarGroup className="group-data-[collapsible=icon]:px-0">
           <SidebarMenu>
-            {mainNavItems.map((item) => (
+            {mainNavigationItems.map((item) => (
               <SidebarMenuItem key={item.title} className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center">
-                <SidebarMenuButton
-                  asChild
-                  isActive={pathname === item.url}
-                  tooltip={item.title}
-                  className="group-data-[collapsible=icon]:size-8"
-                >
-                  <Link href={item.url}>
+                {"url" in item ? (
+                  <SidebarMenuButton
+                    asChild
+                    isActive={pathname === item.url}
+                    tooltip={item.title}
+                    className="group-data-[collapsible=icon]:size-8"
+                  >
+                    <Link href={item.url}>
+                      <item.icon className="shrink-0" />
+                      <span className="group-data-[collapsible=icon]:hidden">{item.title}</span>
+                      {item.trailing != null ? <div className="ml-auto group-data-[collapsible=icon]:hidden">{item.trailing}</div> : null}
+                    </Link>
+                  </SidebarMenuButton>
+                ) : (
+                  <SidebarMenuButton
+                    type="button"
+                    tooltip={item.title}
+                    className="group-data-[collapsible=icon]:size-8"
+                    onClick={item.onClick}
+                  >
                     <item.icon className="shrink-0" />
                     <span className="group-data-[collapsible=icon]:hidden">{item.title}</span>
-                    {item.trailing && <div className="ml-auto group-data-[collapsible=icon]:hidden">{item.trailing}</div>}
-                  </Link>
-                </SidebarMenuButton>
+                    {item.trailing != null ? <div className="ml-auto group-data-[collapsible=icon]:hidden">{item.trailing}</div> : null}
+                  </SidebarMenuButton>
+                )}
               </SidebarMenuItem>
             ))}
           </SidebarMenu>
