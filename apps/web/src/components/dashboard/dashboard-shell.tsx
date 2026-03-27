@@ -1,21 +1,43 @@
 "use client"
 
-import { SidebarInset, SidebarProvider } from "@ofortuna/ui/components/ui/sidebar"
+import * as React from "react"
+import { Menu } from "lucide-react"
+
 import { DashboardSidebar } from "./dashboard-sidebar"
 
 export function DashboardShell({ children }: { children: React.ReactNode }) {
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = React.useState(false)
+
   return (
-    <SidebarProvider>
-      <div className="flex min-h-screen w-full bg-background font-sans">
-        <DashboardSidebar />
-        <SidebarInset className="flex flex-col min-w-0">
-          <div className="flex-1 overflow-auto" data-dashboard-scroll-root="">
-            <div className="px-4 pb-6 pt-0 md:px-0">
-              {children}
-            </div>
+    <div className="min-h-screen bg-[#fcfbf8] text-[#1c1c1c]">
+      <DashboardSidebar
+        isMobileOpen={isMobileSidebarOpen}
+        onCloseMobile={() => setIsMobileSidebarOpen(false)}
+      />
+
+      <div className="flex min-h-screen min-w-0 flex-1 flex-col lg:pl-[17rem]">
+        <header className="sticky top-0 z-20 flex items-center justify-between bg-[#fcfbf8]/95 px-4 py-3 backdrop-blur lg:hidden">
+          <button
+            type="button"
+            onClick={() => setIsMobileSidebarOpen(true)}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full text-[#4b4a46] transition-colors hover:bg-black/5"
+            aria-label="Open navigation"
+          >
+            <Menu className="size-5.5" />
+          </button>
+          <div className="text-xl font-semibold tracking-[-0.04em]">Ofortuna</div>
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#6c37d6] text-sm font-semibold text-white">
+            A
           </div>
-        </SidebarInset>
+        </header>
+
+        <main
+          className="min-w-0 flex-1 overflow-y-auto"
+          data-dashboard-scroll-root=""
+        >
+          {children}
+        </main>
       </div>
-    </SidebarProvider>
+    </div>
   )
 }

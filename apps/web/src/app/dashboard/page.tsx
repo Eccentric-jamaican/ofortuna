@@ -1,5 +1,5 @@
-import { DashboardPromptComposer } from "@/components/dashboard/dashboard-prompt-composer"
+import { DashboardV1Workspace } from "@/components/dashboard/dashboard-v1-workspace"
 
 export default function DashboardPage() {
-  return <DashboardPromptComposer />
+  return <DashboardV1Workspace />
 }

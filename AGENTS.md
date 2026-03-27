@@ -17,7 +17,7 @@ It helps founders move from an unstructured idea to a structured matter workspac
 
 The product is not a lawyer marketplace and not just a document vault.
 It is a matter-based operating system for business setup, company records, and legal coordination.
-This repository is a VERY EARLY WIP. Proposing sweeping changes that improve long-term maintainability is encouraged.
+This repository is a VERY EARLY WIP. Proposing sweeping changes that improve long-term maintainability is encouraged. that does not mean variable/function/constants name should imply that the code is WIP.
 
 
 
@@ -117,4 +117,4 @@ Long term maintainability is a core priority. If you add new functionality, firs
 
 - Design language: premium, minimal, calm professional workspace
 - Component system: shadcn/ui
-- Styling: Tailwind CSS v4
+- Styling: Tailwind CSS v4 Tailwind v4 has breaking changes from v3 — particularly around how tokens/config works.make sure we write styles that are compatible with existing setup rather than assuming v3 syntax.
