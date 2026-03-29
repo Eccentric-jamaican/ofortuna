@@ -1,9 +1,83 @@
-import { DashboardShell } from "@/components/dashboard/dashboard-shell"
+import {
+  AppSidebar,
+  type AppSidebarProps,
+} from "@ofortuna/ui/components/app-sidebar"
+import {
+  SidebarProvider,
+  SidebarTrigger,
+} from "@ofortuna/ui/components/ui/sidebar"
+
+const sidebarData: AppSidebarProps = {
+  user: {
+    name: "Addis",
+    email: "addis@ofortuna.com",
+    avatar: "/avatars/user.jpg",
+  },
+  teams: [
+    {
+      name: "Addis's Ofortuna",
+      plan: "Free",
+    },
+  ],
+  navMain: [
+    {
+      title: "Home",
+      url: "/dashboard",
+    },
+    {
+      title: "Search",
+      url: "/dashboard/search",
+    },
+    {
+      title: "Resources",
+      url: "/dashboard/resources",
+    },
+  ],
+  projects: [
+    {
+      name: "Active matters",
+      url: "/dashboard/matters",
+    },
+    {
+      name: "Priority matters",
+      url: "/dashboard/starred",
+    },
+    {
+      name: "My records",
+      url: "/dashboard/created",
+    },
+    {
+      name: "Shared access",
+      url: "/dashboard/shared",
+    },
+  ],
+}
 
 export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  return <DashboardShell>{children}</DashboardShell>
+  return (
+    <SidebarProvider>
+      <AppSidebar {...sidebarData} />
+
+      <div className="flex min-h-svh flex-1 flex-col bg-[#f9fafb]">
+        <header className="sticky top-0 z-20 flex items-center justify-between bg-[#f9fafb]/95 px-4 py-3 backdrop-blur lg:hidden">
+          <SidebarTrigger
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-black/5"
+            aria-label="Open navigation"
+          />
+          <div className="text-xl font-semibold tracking-[-0.04em]">Ofortuna</div>
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-foreground">
+            A
+          </div>
+        </header>
+
+        <main className="min-w-0 flex-1 overflow-y-auto" data-dashboard-scroll-root="">
+          {children}
+        </main>
+      </div>
+    </SidebarProvider>
+  )
 }
