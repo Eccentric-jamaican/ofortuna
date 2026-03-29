@@ -18,7 +18,6 @@ import { Button } from "@ofortuna/ui/components/ui/button"
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from "@ofortuna/ui/components/ui/card"
@@ -183,7 +182,7 @@ function WorkspaceTile({ card }: { card: WorkspaceCard }) {
       <p className="mt-2 text-[12px] text-[#6b7280] leading-5">{card.summary}</p>
 
       <div className="flex items-center justify-between mt-3 pt-2 border-t border-[#f3f4f6]">
-        {card.href ? (
+        {card.href != null && card.href.length > 0 ? (
           <Link href={card.href}>
             <Button
               type="button"

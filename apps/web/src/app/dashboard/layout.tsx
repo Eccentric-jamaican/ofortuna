@@ -25,6 +25,10 @@ const sidebarData: AppSidebarProps = {
       url: "/dashboard",
     },
     {
+      title: "Inbox",
+      url: "/dashboard/inbox",
+    },
+    {
       title: "Search",
       url: "/dashboard/search",
     },
@@ -43,8 +47,8 @@ const sidebarData: AppSidebarProps = {
       url: "/dashboard/starred",
     },
     {
-      name: "My records",
-      url: "/dashboard/created",
+      name: "Vault",
+      url: "/dashboard/vault",
     },
     {
       name: "Shared access",

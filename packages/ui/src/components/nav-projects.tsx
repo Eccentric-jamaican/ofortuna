@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import {
   Folder,
 } from "lucide-react"
@@ -29,10 +30,10 @@ export function NavProjects({
           return (
             <SidebarMenuItem key={item.name}>
               <SidebarMenuButton asChild>
-                <a href={item.url}>
+                <Link href={item.url}>
                   <Folder />
                   <span>{item.name}</span>
-                </a>
+                </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
           )
