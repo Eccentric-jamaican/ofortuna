@@ -33,6 +33,12 @@ import { PromptComposerSurface } from "./dashboard-prompt-composer"
 
 type DashboardTab = "matters" | "records" | "templates"
 
+type WorkspaceCardAction = {
+  id: string
+  label: string
+  onClick: (cardId: string) => void
+}
+
 type WorkspaceCard = {
   id: string
   title: string
@@ -41,6 +47,10 @@ type WorkspaceCard = {
   status: string
   icon: typeof FolderOpenDot
   statusColor: string
+  href?: string
+  onOpen?: (id: string) => void
+  onToggleFavorite?: (id: string) => void
+  actions?: readonly WorkspaceCardAction[]
 }
 
 const tabs: readonly { id: DashboardTab; label: string }[] = [
@@ -132,6 +142,18 @@ function StatusBadge({ status, colorClass }: { status: string; colorClass: strin
 function WorkspaceTile({ card }: { card: WorkspaceCard }) {
   const Icon = card.icon
 
+  const handleOpen = () => {
+    if (card.onOpen) {
+      card.onOpen(card.id)
+    }
+  }
+
+  const handleFavorite = () => {
+    if (card.onToggleFavorite) {
+      card.onToggleFavorite(card.id)
+    }
+  }
+
   return (
     <div className="rounded-xl border border-[#e5e7eb] bg-white p-3">
       <div className="flex items-start justify-between gap-2 mb-2">
@@ -150,31 +172,50 @@ function WorkspaceTile({ card }: { card: WorkspaceCard }) {
           size="icon-sm"
           className="h-6 w-6 rounded-md hover:bg-[#f3f4f6]"
           aria-label={`Open actions for ${card.title}`}
+          disabled={!card.actions || card.actions.length === 0}
         >
           <MoreHorizontal className="size-3.5 text-[#9ca3af]" />
         </Button>
       </div>
-      
+
       <StatusBadge status={card.status} colorClass={card.statusColor} />
-      
+
       <p className="mt-2 text-[12px] text-[#6b7280] leading-5">{card.summary}</p>
-      
+
       <div className="flex items-center justify-between mt-3 pt-2 border-t border-[#f3f4f6]">
-        <Button 
-          type="button" 
-          variant="outline" 
-          size="sm" 
-          className="h-6 px-2 text-[11px] border-[#e5e7eb] bg-transparent rounded-md hover:bg-[#f3f4f6]"
-        >
-          <FolderOpenDot className="size-3 mr-1" />
-          Open
-        </Button>
+        {card.href ? (
+          <Link href={card.href}>
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              className="h-6 px-2 text-[11px] border-[#e5e7eb] bg-transparent rounded-md hover:bg-[#f3f4f6]"
+            >
+              <FolderOpenDot className="size-3 mr-1" />
+              Open
+            </Button>
+          </Link>
+        ) : (
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            className="h-6 px-2 text-[11px] border-[#e5e7eb] bg-transparent rounded-md hover:bg-[#f3f4f6]"
+            onClick={handleOpen}
+            disabled={!card.onOpen}
+          >
+            <FolderOpenDot className="size-3 mr-1" />
+            Open
+          </Button>
+        )}
         <Button
           type="button"
           variant="ghost"
           size="icon-sm"
           className="h-6 w-6 rounded-md hover:bg-[#f3f4f6]"
           aria-label={`Favorite ${card.title}`}
+          onClick={handleFavorite}
+          disabled={!card.onToggleFavorite}
         >
           <Star className="size-3.5 text-[#d1d5db]" />
         </Button>
@@ -186,6 +227,10 @@ function WorkspaceTile({ card }: { card: WorkspaceCard }) {
 export function DashboardV1Workspace() {
   const [prompt, setPrompt] = React.useState("")
   const [activeTab, setActiveTab] = React.useState<DashboardTab>("matters")
+
+  const handleSubmitPrompt = (submittedPrompt: string) => {
+    console.log("Submitting prompt:", submittedPrompt)
+  }
 
   return (
     <div className="min-h-screen bg-[#f9fafb] p-4">
@@ -214,6 +259,7 @@ export function DashboardV1Workspace() {
                   id="dashboard-primary-composer"
                   prompt={prompt}
                   onPromptChange={setPrompt}
+                  onSubmit={handleSubmitPrompt}
                   placeholder="Describe your company, founders, and what needs preparation."
                 />
               </div>

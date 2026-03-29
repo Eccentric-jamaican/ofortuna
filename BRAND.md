@@ -1,6 +1,6 @@
 # Ofortuna Brand Guidelines
 
-presenting the Ofortuna brand consistently and professionally.
+This guide explains how to present the Ofortuna brand consistently and professionally.
 
 ## NAMING
 
@@ -8,7 +8,7 @@ Ofortuna is a single word, always spelled with a capital “O”. It is the bran
 
 ## USAGE
 
-Provide plenty of space around Ofprtuna assets. Make them big or make them small, but give them room to breathe. They shouldn’t feel cramped or cluttered.
+Provide plenty of space around Ofortuna assets. Make them big or make them small, but give them room to breathe. They shouldn’t feel cramped or cluttered.
 
 ## Ofortuna wordmark⁠
 
@@ -20,7 +20,7 @@ When referring to Ofortuna as a company, such as on social media, or where a “
 
 ## Colors⁠
 
-Comfortable against light and dark backgrounds, Ofortuna’s primary brand color is a subtle red blue. The following light and dark accents are preferred for monochrome wordmark usage, while the brand color is typically reserved for backgrounds.
+Comfortable against light and dark backgrounds, Ofortuna’s primary brand color is a subtle red-blue. The following light and dark accents are preferred for monochrome wordmark usage, while the brand color is typically reserved for backgrounds.
 
 #F4F5F8
 #222326

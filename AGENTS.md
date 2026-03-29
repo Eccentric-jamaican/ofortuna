@@ -17,7 +17,7 @@ It helps founders move from an unstructured idea to a structured matter workspac
 
 The product is not a lawyer marketplace and not just a document vault.
 It is a matter-based operating system for business setup, company records, and legal coordination.
-This repository is a VERY EARLY WIP. Proposing sweeping changes that improve long-term maintainability is encouraged. that does not mean variable/function/constants name should imply that the code is WIP.
+This repository is a very early work-in-progress. Proposing sweeping changes that improve long-term maintainability is encouraged. Do not use variable, function, or constant names that permanently imply the code is WIP; prefer descriptive, stable identifiers.
 
 
 

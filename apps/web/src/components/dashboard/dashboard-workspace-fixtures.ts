@@ -2,6 +2,7 @@ import type {
   AiSummaryRecord,
   AuditLogRecord,
   DocumentMetadata,
+  DocumentVersionRecord,
   FilingPacketRecord,
   FilingReadinessRecord,
   LawyerMatchSearchResult,
@@ -26,8 +27,8 @@ export const founderMatters: readonly MatterSummary[] = [
     urgencyScore: 61,
     confidenceScore: 87,
     documentCompletenessScore: 68,
-    createdAt: "2026-03-18T10:15:00.000Z",
-    updatedAt: "2026-03-23T11:20:00.000Z",
+    createdAt: 1773828900000,
+    updatedAt: 1774264800000,
   },
   {
     id: "matter_founder_belize",
@@ -42,8 +43,8 @@ export const founderMatters: readonly MatterSummary[] = [
     urgencyScore: 54,
     confidenceScore: 71,
     documentCompletenessScore: 42,
-    createdAt: "2026-03-19T08:00:00.000Z",
-    updatedAt: "2026-03-23T09:10:00.000Z",
+    createdAt: 1773907200000,
+    updatedAt: 1774257000000,
   },
 ] as const
 
@@ -55,7 +56,7 @@ export const founderParticipants: readonly MatterParticipantAccess[] = [
     role: "founder",
     accessLevel: "owner",
     invitedByUserId: "user_founder_addis",
-    createdAt: "2026-03-18T10:15:00.000Z",
+    createdAt: 1773828900000,
   },
   {
     id: "participant_collaborator_ops",
@@ -64,7 +65,7 @@ export const founderParticipants: readonly MatterParticipantAccess[] = [
     role: "collaborator",
     accessLevel: "commenter",
     invitedByUserId: "user_founder_addis",
-    createdAt: "2026-03-22T13:05:00.000Z",
+    createdAt: 1774184700000,
   },
 ] as const
 
@@ -80,8 +81,8 @@ export const founderDocuments: readonly DocumentMetadata[] = [
     sizeBytes: 184320,
     deleteState: "active",
     latestVersionNumber: 2,
-    createdAt: "2026-03-18T11:40:00.000Z",
-    updatedAt: "2026-03-22T09:30:00.000Z",
+    createdAt: 1773834000000,
+    updatedAt: 1774171800000,
   },
   {
     id: "doc_founder_ids",
@@ -94,8 +95,8 @@ export const founderDocuments: readonly DocumentMetadata[] = [
     sizeBytes: 423981,
     deleteState: "active",
     latestVersionNumber: 1,
-    createdAt: "2026-03-18T12:10:00.000Z",
-    updatedAt: "2026-03-18T12:10:00.000Z",
+    createdAt: 1773835800000,
+    updatedAt: 1773835800000,
   },
   {
     id: "doc_belize_address",
@@ -108,9 +109,9 @@ export const founderDocuments: readonly DocumentMetadata[] = [
     sizeBytes: 92811,
     deleteState: "soft_deleted",
     latestVersionNumber: 1,
-    createdAt: "2026-03-19T09:20:00.000Z",
-    updatedAt: "2026-03-23T08:15:00.000Z",
-    deletedAt: "2026-03-23T08:15:00.000Z",
+    createdAt: 1773912000000,
+    updatedAt: 1774253700000,
+    deletedAt: 1774253700000,
   },
 ] as const
 
@@ -161,7 +162,7 @@ export const founderNotifications: readonly NotificationItem[] = [
     title: "Formation matter is ready for legal review",
     body: "The Jamaica company matter now has enough context for counsel review.",
     matterId: "matter_founder_formation",
-    createdAt: "2026-03-23T11:20:00.000Z",
+    createdAt: 1774264800000,
   },
   {
     id: "notification_collaborator",
@@ -170,8 +171,8 @@ export const founderNotifications: readonly NotificationItem[] = [
     title: "Finance collaborator accepted access",
     body: "Your collaborator can now comment on the incorporation matter.",
     matterId: "matter_founder_formation",
-    createdAt: "2026-03-22T13:15:00.000Z",
-    readAt: "2026-03-22T13:18:00.000Z",
+    createdAt: 1774185300000,
+    readAt: 1774185480000,
   },
 ] as const
 
@@ -188,7 +189,7 @@ export const founderReadiness: readonly FilingReadinessRecord[] = [
       "Articles intake is complete.",
       "Reserved name has been confirmed.",
     ],
-    lastEvaluatedAt: "2026-03-23T11:00:00.000Z",
+    lastEvaluatedAt: 1774263600000,
   },
   {
     id: "readiness_belize_primary",
@@ -199,7 +200,30 @@ export const founderReadiness: readonly FilingReadinessRecord[] = [
     missingFields: ["Registered office contact"],
     missingDocuments: ["Proof of Belize address"],
     notes: ["Belize packet is blocked until address evidence is restored."],
-    lastEvaluatedAt: "2026-03-23T08:15:00.000Z",
+    lastEvaluatedAt: 1774253700000,
+  },
+] as const
+
+export const founderDocumentVersions: readonly DocumentVersionRecord[] = [
+  {
+    id: "docver_articles_v2",
+    documentId: "doc_articles_draft",
+    versionNumber: 2,
+    storageKey: "matters/matter_founder_formation/articles-v2.pdf",
+    mimeType: "application/pdf",
+    sizeBytes: 184320,
+    uploadedByUserId: "user_founder_addis",
+    createdAt: 1774171800000,
+  },
+  {
+    id: "docver_ids_v1",
+    documentId: "doc_founder_ids",
+    versionNumber: 1,
+    storageKey: "matters/matter_founder_formation/founder-ids.zip",
+    mimeType: "application/zip",
+    sizeBytes: 423981,
+    uploadedByUserId: "user_founder_addis",
+    createdAt: 1773835800000,
   },
 ] as const
 
@@ -214,7 +238,7 @@ export const founderFilingPackets: readonly FilingPacketRecord[] = [
     sourceVersionIds: ["docver_articles_v2", "docver_ids_v1"],
     reviewSummary:
       "Packet assembled for counsel review with source versions locked for filing preparation.",
-    createdAt: "2026-03-23T11:10:00.000Z",
+    createdAt: 1774264200000,
   },
 ] as const
 
@@ -241,7 +265,7 @@ export const founderAiSummaries: readonly AiSummaryRecord[] = [
       },
     ],
     agent: "summarization_agent",
-    generatedAt: "2026-03-23T10:58:00.000Z",
+    generatedAt: 1774263480000,
   },
   {
     id: "ai_summary_lawyer_brief",
@@ -259,7 +283,7 @@ export const founderAiSummaries: readonly AiSummaryRecord[] = [
       },
     ],
     agent: "lawyer_handoff_agent",
-    generatedAt: "2026-03-23T11:12:00.000Z",
+    generatedAt: 1774264320000,
   },
 ] as const
 
@@ -321,8 +345,8 @@ export const lawyerInboxMatters: readonly MatterSummary[] = [
     urgencyScore: 46,
     confidenceScore: 76,
     documentCompletenessScore: 58,
-    createdAt: "2026-03-20T14:05:00.000Z",
-    updatedAt: "2026-03-23T09:55:00.000Z",
+    createdAt: 1774015500000,
+    updatedAt: 1774259700000,
   },
 ] as const
 
@@ -334,7 +358,7 @@ export const lawyerNotifications: readonly NotificationItem[] = [
     title: "A founder shared a matter with you",
     body: "Olive Bay Foods incorporation is ready for your review.",
     matterId: "matter_founder_formation",
-    createdAt: "2026-03-23T11:14:00.000Z",
+    createdAt: 1774264440000,
   },
 ] as const
 
@@ -345,7 +369,7 @@ export const verificationQueue: readonly LawyerVerificationRecord[] = [
     status: "under_review",
     registryName: "Belize Bar Association",
     registryBarNumber: "BZ-4421",
-    submittedAt: "2026-03-22T16:20:00.000Z",
+    submittedAt: 1774196400000,
     notes: "Registry match found, waiting on final certificate upload review.",
   },
   {
@@ -354,7 +378,7 @@ export const verificationQueue: readonly LawyerVerificationRecord[] = [
     status: "pending",
     registryName: "General Legal Council Jamaica",
     registryBarNumber: "JM-18872",
-    submittedAt: "2026-03-23T09:02:00.000Z",
+    submittedAt: 1774256520000,
   },
 ] as const
 
@@ -365,7 +389,7 @@ export const adminNotifications: readonly NotificationItem[] = [
     kind: "verification_result",
     title: "Two lawyer verifications need review",
     body: "Registry-assisted checks are ready for admin review.",
-    createdAt: "2026-03-23T09:15:00.000Z",
+    createdAt: 1774257300000,
   },
 ] as const
 
@@ -380,7 +404,7 @@ export const auditTrail: readonly AuditLogRecord[] = [
     previousStateJson: "{\"accessLevel\":\"viewer\"}",
     nextStateJson: "{\"accessLevel\":\"commenter\"}",
     result: "success",
-    createdAt: "2026-03-22T13:05:00.000Z",
+    createdAt: 1774184700000,
   },
   {
     id: "audit_filing_packet",
@@ -391,6 +415,6 @@ export const auditTrail: readonly AuditLogRecord[] = [
     nextStateJson:
       "{\"matterId\":\"matter_founder_formation\",\"status\":\"prepared\"}",
     result: "success",
-    createdAt: "2026-03-23T11:10:00.000Z",
+    createdAt: 1774264200000,
   },
 ] as const

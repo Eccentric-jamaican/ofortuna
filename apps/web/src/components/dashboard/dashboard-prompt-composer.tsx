@@ -11,6 +11,7 @@ export type PromptComposerSurfaceProps = {
   id: string
   prompt: string
   onPromptChange: (value: string) => void
+  onSubmit?: (prompt: string) => void
   placeholder?: string
   className?: string
 }
@@ -19,11 +20,18 @@ export function PromptComposerSurface({
   id,
   prompt,
   onPromptChange,
+  onSubmit,
   placeholder,
   className,
 }: PromptComposerSurfaceProps) {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    onSubmit?.(prompt)
+  }
+
   return (
     <form
+      onSubmit={handleSubmit}
       className={cn(
         "flex w-full flex-col gap-3 rounded-xl border border-[#2e2e2e] bg-[#232323] p-3",
         className

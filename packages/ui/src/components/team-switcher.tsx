@@ -1,15 +1,13 @@
 "use client"
 
 import * as React from "react"
-import { ChevronsUpDown, Plus } from "lucide-react"
+import { ChevronsUpDown } from "lucide-react"
 
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu"
 import {
@@ -24,14 +22,13 @@ export function TeamSwitcher({
 }: {
   teams: {
     name: string
-    logo: React.ElementType
     plan: string
   }[]
 }) {
   const { isMobile } = useSidebar()
-  const [activeTeam, setActiveTeam] = React.useState(teams[0])
+  const [activeTeam, setActiveTeam] = React.useState(teams[0] ?? null)
 
-  if (!activeTeam) {
+  if (!activeTeam || teams.length === 0) {
     return null
   }
 
@@ -43,8 +40,8 @@ export function TeamSwitcher({
             <SidebarMenuButton
               className="data-[state=open]:bg-[#f3f4f6] data-[state=open]:text-sidebar-foreground h-[44px] border-b border-[#e5e7eb] rounded-none"
             >
-              <div className="flex h-[20px] w-[20px] items-center justify-center rounded-[6px] bg-sidebar-primary text-sidebar-primary-foreground">
-                <activeTeam.logo className="size-3" />
+              <div className="flex h-[20px] w-[20px] items-center justify-center rounded-[6px] bg-sidebar-primary text-[10px] font-semibold text-sidebar-primary-foreground">
+                {activeTeam.name.charAt(0).toUpperCase()}
               </div>
               <div className="grid flex-1 text-left leading-tight">
                 <span className="truncate text-[13px] font-medium">{activeTeam.name}</span>
@@ -62,26 +59,18 @@ export function TeamSwitcher({
             <DropdownMenuLabel className="text-xs text-muted-foreground">
               Teams
             </DropdownMenuLabel>
-            {teams.map((team, index) => (
+            {teams.map((team) => (
               <DropdownMenuItem
                 key={team.name}
                 onClick={() => setActiveTeam(team)}
                 className="gap-2 p-2"
               >
-                <div className="flex size-6 items-center justify-center rounded-md border">
-                  <team.logo className="size-3.5 shrink-0" />
+                <div className="flex size-6 items-center justify-center rounded-md border text-[11px] font-semibold">
+                  {team.name.charAt(0).toUpperCase()}
                 </div>
                 {team.name}
-                <DropdownMenuShortcut>⌘{index + 1}</DropdownMenuShortcut>
               </DropdownMenuItem>
             ))}
-            <DropdownMenuSeparator />
-            <DropdownMenuItem className="gap-2 p-2">
-              <div className="flex size-6 items-center justify-center rounded-md border bg-transparent">
-                <Plus className="size-4" />
-              </div>
-              <div className="font-medium text-muted-foreground">Add team</div>
-            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </SidebarMenuItem>

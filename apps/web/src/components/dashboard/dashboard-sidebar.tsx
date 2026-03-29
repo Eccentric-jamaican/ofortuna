@@ -39,7 +39,7 @@ const primaryLinks: readonly NavigationLink[] = [
 ]
 
 const projectLinks: readonly NavigationLink[] = [
-  { href: "/dashboard", label: "Active matters", icon: BriefcaseBusiness },
+  { href: "/dashboard/matters", label: "Active matters", icon: BriefcaseBusiness },
   { href: "/dashboard/starred", label: "Priority matters", icon: Star },
   { href: "/dashboard/created", label: "My records", icon: FileStack },
   { href: "/dashboard/shared", label: "Shared access", icon: Users },
@@ -96,6 +96,8 @@ function SidebarBody({
       <button
         type="button"
         className="mb-4 flex w-full items-center gap-3 rounded-xl border border-border/35 bg-card px-3 py-2.5 text-left shadow-sm transition-colors hover:bg-muted/35"
+        aria-disabled="true"
+        disabled
       >
         <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary text-sm font-semibold text-primary-foreground">
           A
@@ -165,21 +167,19 @@ function SidebarBody({
         </div>
         <div className="space-y-1">
           {recentProjects.map((item) => (
-            <button
+            <div
               key={item}
-              type="button"
-              className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm text-muted-foreground transition-colors hover:bg-muted/55"
+              className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm text-muted-foreground"
             >
               <div className="size-2 rounded-full bg-primary/35" />
               <span className="truncate">{item}</span>
-            </button>
+            </div>
           ))}
         </div>
       </div>
 
       <div className="mt-auto space-y-4 pt-5">
-        <button
-          type="button"
+        <div
           className="flex w-full items-center justify-between rounded-2xl border border-border/35 bg-card px-3.5 py-3 text-left shadow-sm"
         >
           <div>
@@ -189,10 +189,9 @@ function SidebarBody({
           <div className="flex h-9 w-9 items-center justify-center rounded-full border border-border/40 bg-muted/45">
             <Gift className="size-4.5 text-muted-foreground" />
           </div>
-        </button>
+        </div>
 
-        <button
-          type="button"
+        <div
           className="flex w-full items-center justify-between rounded-2xl border border-border/35 bg-card px-3.5 py-3 text-left shadow-sm"
         >
           <div>
@@ -202,20 +201,19 @@ function SidebarBody({
           <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/8">
             <ShieldCheck className="size-4.5 text-primary" />
           </div>
-        </button>
+        </div>
 
         <div className="flex items-center justify-between px-1">
           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-foreground">
             A
           </div>
-          <button
-            type="button"
+          <div
             className="relative flex h-8 w-8 items-center justify-center rounded-full border border-border/40 bg-card text-muted-foreground"
             aria-label="Inbox"
           >
             <Inbox className="size-4.5" />
             <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-primary" />
-          </button>
+          </div>
         </div>
       </div>
     </div>

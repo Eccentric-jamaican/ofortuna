@@ -1,13 +1,66 @@
-import { AppSidebar } from "@ofortuna/ui/components/app-sidebar"
+import {
+  AppSidebar,
+  type AppSidebarProps,
+} from "@ofortuna/ui/components/app-sidebar"
 import {
   SidebarProvider,
   SidebarTrigger,
 } from "@ofortuna/ui/components/ui/sidebar"
 
-export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+const sidebarData: AppSidebarProps = {
+  user: {
+    name: "Addis",
+    email: "addis@ofortuna.com",
+    avatar: "/avatars/user.jpg",
+  },
+  teams: [
+    {
+      name: "Addis's Ofortuna",
+      plan: "Free",
+    },
+  ],
+  navMain: [
+    {
+      title: "Home",
+      url: "/dashboard",
+    },
+    {
+      title: "Search",
+      url: "/dashboard/search",
+    },
+    {
+      title: "Resources",
+      url: "/dashboard/resources",
+    },
+  ],
+  projects: [
+    {
+      name: "Active matters",
+      url: "/dashboard/matters",
+    },
+    {
+      name: "Priority matters",
+      url: "/dashboard/starred",
+    },
+    {
+      name: "My records",
+      url: "/dashboard/created",
+    },
+    {
+      name: "Shared access",
+      url: "/dashboard/shared",
+    },
+  ],
+}
+
+export default function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
     <SidebarProvider>
-      <AppSidebar />
+      <AppSidebar {...sidebarData} />
 
       <div className="flex min-h-svh flex-1 flex-col bg-[#f9fafb]">
         <header className="sticky top-0 z-20 flex items-center justify-between bg-[#f9fafb]/95 px-4 py-3 backdrop-blur lg:hidden">

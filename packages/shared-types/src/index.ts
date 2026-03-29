@@ -175,8 +175,8 @@ export type MatterSummary = {
   urgencyScore: number
   confidenceScore: number
   documentCompletenessScore: number
-  createdAt: string
-  updatedAt: string
+  createdAt: number
+  updatedAt: number
 }
 
 export type MatterParticipantAccess = {
@@ -186,7 +186,7 @@ export type MatterParticipantAccess = {
   role: UserRole
   accessLevel: ParticipantAccessLevel
   invitedByUserId: string
-  createdAt: string
+  createdAt: number
 }
 
 export type DocumentMetadata = {
@@ -200,9 +200,9 @@ export type DocumentMetadata = {
   sizeBytes: number
   deleteState: DocumentDeleteState
   latestVersionNumber: number
-  createdAt: string
-  updatedAt: string
-  deletedAt?: string
+  createdAt: number
+  updatedAt: number
+  deletedAt?: number
 }
 
 export type DocumentVersionRecord = {
@@ -213,7 +213,7 @@ export type DocumentVersionRecord = {
   mimeType: string
   sizeBytes: number
   uploadedByUserId: string
-  createdAt: string
+  createdAt: number
 }
 
 export type LawyerConsultPricing = {
@@ -228,8 +228,8 @@ export type LawyerVerificationRecord = {
   status: LawyerVerificationStatus
   registryName: string
   registryBarNumber: string
-  submittedAt: string
-  reviewedAt?: string
+  submittedAt: number
+  reviewedAt?: number
   reviewedByUserId?: string
   notes?: string
 }
@@ -274,7 +274,7 @@ export type AiSummaryRecord = {
   body: string
   citations: readonly AiCitationSource[]
   agent: AiAgentKind
-  generatedAt: string
+  generatedAt: number
 }
 
 export type AiExtractionRecord = {
@@ -285,7 +285,7 @@ export type AiExtractionRecord = {
   agent: AiAgentKind
   status: "pending" | "completed" | "failed"
   payloadJson: string
-  generatedAt: string
+  generatedAt: number
 }
 
 export type FilingReadinessRecord = {
@@ -297,7 +297,7 @@ export type FilingReadinessRecord = {
   missingFields: readonly string[]
   missingDocuments: readonly string[]
   notes: readonly string[]
-  lastEvaluatedAt: string
+  lastEvaluatedAt: number
 }
 
 export type FilingPacketRecord = {
@@ -309,7 +309,7 @@ export type FilingPacketRecord = {
   sourceDocumentIds: readonly string[]
   sourceVersionIds: readonly string[]
   reviewSummary: string
-  createdAt: string
+  createdAt: number
 }
 
 export type NotificationItem = {
@@ -319,8 +319,8 @@ export type NotificationItem = {
   title: string
   body: string
   matterId?: string
-  createdAt: string
-  readAt?: string
+  createdAt: number
+  readAt?: number
 }
 
 export type AuditLogRecord = {
@@ -333,7 +333,7 @@ export type AuditLogRecord = {
   previousStateJson?: string
   nextStateJson?: string
   result: "success" | "failure"
-  createdAt: string
+  createdAt: number
 }
 
 export type PlatformInvoiceReference = {
@@ -343,6 +343,7 @@ export type PlatformInvoiceReference = {
   amountMinor: number
   currency: CurrencyCode
   status: "draft" | "issued" | "paid"
+  createdAt: number
 }
 
 export type MatterInvoiceReference = {
@@ -351,6 +352,7 @@ export type MatterInvoiceReference = {
   amountMinor: number
   currency: CurrencyCode
   status: "draft" | "issued" | "paid"
+  createdAt: number
 }
 
 export type ProfessionalFeeReference = {
@@ -360,4 +362,5 @@ export type ProfessionalFeeReference = {
   quoteAmountMinor?: number
   currency: CurrencyCode
   status: ProfessionalFeeStatus
+  createdAt: number
 }

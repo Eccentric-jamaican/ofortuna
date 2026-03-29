@@ -58,6 +58,7 @@ It is a matter-based workflow and coordination system.
 - V1 Filing Assistant is **preparation-only**.
 - It prepares and validates filing packets.
 - It does **not** automate registry submission.
+- The "Submitted" founder-facing state is a manual/off-platform status recorded after the founder (or their agent/lawyer) completes submission to the registry externally.
 
 ### Collaboration and records
 
